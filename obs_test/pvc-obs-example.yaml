@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-class: obs-standard
+    volume.beta.kubernetes.io/storage-provisioner: flexvolume-huawei.com/fuxiobs
+  name: pvc-obs-example
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pv-obs-example

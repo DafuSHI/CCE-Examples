@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-secure-provisioner
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    args:
+    - sleep
+    - "1000000"
+    imagePullPolicy: Always
+    volumeMounts:
+      - name: obs-pvc
+        mountPath: "/tmp/test"
+  restartPolicy: "Never"
+  volumes:
+    - name: obs-pvc
+      persistentVolumeClaim:
+        claimName: pvc-obs-example
